@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmaergyqk4v84"]
+
+[ext_resource type="Texture2D" uid="uid://chehyd2yrxehw" path="res://labirinto_assets/turtle_00.png" id="1_fnim8"]
+[ext_resource type="Script" path="res://turtle.gd" id="1_sxp7i"]
+[ext_resource type="Texture2D" uid="uid://chc5nvbc7dan0" path="res://labirinto_assets/turtle_01.png" id="2_dbivu"]
+[ext_resource type="AudioStream" uid="uid://y78ylqf3kamv" path="res://labirinto_assets/kill_turtle.wav" id="3_ihqno"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i41k2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fnim8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dbivu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dka3m"]
+radius = 19.0263
+
+[node name="Turtle" type="CharacterBody2D"]
+script = ExtResource("1_sxp7i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i41k2")
+frame_progress = 0.354245
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dka3m")
+
+[node name="SoundKill" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ihqno")
+
+[node name="Timer" type="Timer" parent="."]
